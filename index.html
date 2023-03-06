@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 20</title>
+    <style>
+      .pclass {
+         width:1050px;
+        height: 100%;
+        background-image: linear-gradient(to right, rgb(17, 17, 17) , rgb(0, 255, 98));
+        margin-left: 90px;
+        margin-top: 50px;
+        padding: 10px;
+        box-sizing: border-box;
+        color:white;
+        border-radius: 10px;
+      }
+      .Next{
+        margin-top:0px;
+        margin-left:180px;
+        margin-bottom:0px;
+        font-size: 20px;
+
+        background: -webkit-linear-gradient(#000000, #5e5000,rgb(175, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px #a1a1a1;
+      }
+      .Next:hover{
+        font-size: 22px;
+      }
+      body{
+        padding:10px;
+   /*     background: url(bg.jpg);
+  background-repeat: no-repeat;
+  background-size: 1300px 580px;
+*/
+background-image: linear-gradient(to right, rgb(255, 250, 205) , rgb(255, 238, 0));
+
+      }
+      .head{
+        margin-top:90px;
+        margin-left:180px;
+        margin-bottom:0px;
+        font-size: 72px;
+  background: -webkit-linear-gradient(#414141, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px #047400;
+      }
+    
+    </style>
+  </head>
+  <body>
+
+    <div class="head">Did You Know...! 
+
+
+     
+    </div>
+   <div class="Next">
+    <a href="">Click here to see Fun Facts..</a>
+   </div>
+    <script>
+      
+
+      // WILL STORE ALL THE STUDENT CARDS AND RENDERS IN THE UI
+      function renderStudentsCard(data = []) {
+       //console.log(data.length);
+       // if(data.length > 0) {
+       //for(let i= 0; i < data.length; i++) {
+           const { text = "" }  = data;
+           const para = document.createElement("p");
+           para.setAttribute("class", "pclass");
+            para.innerText = text;
+            document.body.appendChild(para);
+            const alink = document.createElement("a");
+            alink.setAttribute("class", "aclass");
+           alink.innerText = Next;
+
+            document.body.appendChild(alink);
+       //}
+   // }
+      }
+
+      async function getData() {
+        const studentDataResponse = await fetch(
+          "https://uselessfacts.jsph.pl/api/v2/facts/random"
+        );
+        data = await studentDataResponse.json();
+        console.log(data);
+        //if (data.length > 0) {
+          renderStudentsCard(data);
+       // }
+      }
+      getData();
+    </script>
+    <!-- <div><a href="">Next</a></div>-->
+  </body>
+</html>
